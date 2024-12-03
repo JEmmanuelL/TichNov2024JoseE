@@ -1,0 +1,64 @@
+/* Estilo general */
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    background-color: #f9f9f9;
+    color: #333;
+}
+
+/* Logo */
+img {
+    display: inline-block;
+    margin-bottom: 20px;
+    width: 150px;
+}
+
+/* Título */
+h1 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Contenedor de cada fila */
+.form-group {
+    margin-bottom: 25px; /* Aumenta la separación entre grupos */
+}
+
+/* Etiquetas */
+label {
+    display: inline-block;
+    width: 120px; /* Ancho ajustado para alineación */
+    font-weight: bold;
+}
+
+/* Inputs y select */
+input[type="text"],
+input[type="number"],
+select {
+    width: 220px; /* Ajusta el ancho de los inputs */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Checkbox */
+input[type="checkbox"] {
+    margin-right: 5px;
+}
+
+/* Botón */
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
