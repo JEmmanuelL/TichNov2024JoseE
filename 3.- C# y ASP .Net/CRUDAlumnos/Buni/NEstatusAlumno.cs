@@ -5,44 +5,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Datos;
 
 namespace BusinessLogic
 {
     public class NEstatusAlumno
     {
-        public List<EstatusAlumno> NConsultar()
-        {
-            List<EstatusAlumno> ListAlu = new List<EstatusAlumno>();
 
-            return ListAlu;
-        }
+        public List<EstatusAlumno> NConsultar() => DEstatusAlumno.DConsultar();
 
-        public EstatusAlumno NConsultar(int id)
-        {
-            EstatusAlumno Estatus = new EstatusAlumno();
-            return Estatus;
-        }
+        public EstatusAlumno NConsultar(int id) => DEstatusAlumno.DConsultar(id);
 
-        public int NAgregar(EstatusAlumno DataEstatus)
-        {
-            int Result = 0;
+        public int NAgregar(EstatusAlumno DataEstatus) => DEstatusAlumno.DAgregar(DataEstatus);
 
-            return Result;
-        }
+        public int NActualizar(EstatusAlumno DataEstatus) => DEstatusAlumno.DActualizar(DataEstatus);
 
-        public int NActualizar(EstatusAlumno DataEstatus)
-        {
-            int Result = 0;
+        public int NEliminar(int id) => DEstatusAlumno.DEliminar(id);
 
-            return Result;
-        }
-
-        public int NEliminar(int id)
-        {
-            int Result = 0;
-
-            return Result;
-
-        }
     }
 }
