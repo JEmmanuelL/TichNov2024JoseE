@@ -19,7 +19,7 @@ namespace Datos
 
             try
             {
-                var query = $"consultarEAlumnos";
+                var query = $"consultarEstatusAlumnos";
                 SqlCommand comando;
 
                 using (SqlConnection con = new SqlConnection(_conectString))
@@ -66,7 +66,7 @@ namespace Datos
 
             try
             {
-                var query = $"consultarEAlumnos";
+                var query = $"consultarEstatusAlumnos";
                 SqlCommand comando;
 
                 using (SqlConnection con = new SqlConnection(_conectString))

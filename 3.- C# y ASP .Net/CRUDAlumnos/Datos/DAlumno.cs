@@ -42,7 +42,7 @@ namespace Datos
                                 telefono = reader["telefono"].ToString(),
                                 fechaNacimiento = Convert.ToDateTime(reader["fechaNacimiento"]),
                                 curp = reader["curp"].ToString(),
-                                sueldo = reader["sueldo"].ToString() == null?0:1,
+                                sueldo = reader["sueldo"] == DBNull.Value?0 : Convert.ToDecimal(reader["sueldo"]),
                                 idEstadoOrigen = Convert.ToInt32(reader["idEstadoOrigen"]),
                                 idEstatus = Convert.ToInt32(reader["idEstatus"]),
                        };
@@ -97,7 +97,7 @@ namespace Datos
                             telefono = reader["telefono"].ToString(),
                             fechaNacimiento = Convert.ToDateTime(reader["fechaNacimiento"]),
                             curp = reader["curp"].ToString(),
-                            sueldo = reader["sueldo"].ToString() == null ? 0 : 1,
+                            sueldo = reader["sueldo"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["sueldo"]),
                             idEstadoOrigen = Convert.ToInt32(reader["idEstadoOrigen"]),
                             idEstatus = Convert.ToInt32(reader["idEstatus"]),
                         };
