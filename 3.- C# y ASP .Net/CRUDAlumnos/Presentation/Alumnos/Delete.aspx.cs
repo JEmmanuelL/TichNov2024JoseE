@@ -15,17 +15,44 @@ namespace Presentation.Alumnos
         {
             NAlumno objCRUD = new NAlumno();
 
-            //int id = int.Parse(Request.QueryString["id"] ?? "1");
-
-            int id = 22;
+           int id = int.Parse(Request.QueryString["id"] ?? "20");
 
             Alumno Alum = objCRUD.NConsultar(id);
-            
-            if (objCRUD.NEliminar(Alum.id) >= 1)
+
+            lblID.Text = Alum.id.ToString();
+            lblNombre.Text = Alum.nombre;
+            lblPrimerA.Text = Alum.primerApellido;
+            lblSegundoA.Text = Alum.segundoApellido;
+            lblFechaNA.Text = Alum.fechaNacimiento.ToString("yyyy/MM/dd");
+            lblCURP.Text = Alum.curp;
+            lblCorreo.Text = Alum.correo;
+            lblTelefono.Text = Alum.telefono;
+            lblSueldoM.Text = Alum.sueldo.ToString("c2");
+
+
+            NEstado objCRUDestado = new NEstado();
+            NEstatusAlumno objCRUDEstatus = new NEstatusAlumno();
+
+            Estado EstaEnc = objCRUDestado.NConsultar(Alum.idEstadoOrigen);
+            EstatusAlumno EstatusEnc = objCRUDEstatus.NConsultar(Alum.idEstatus);
+
+
+            lblEstado.Text = EstaEnc.nombre.ToString();
+            lblEstatus.Text = EstatusEnc.nombre.ToString();
+
+    
+
+        }
+
+        protected void btnEliminar_Click(object sender, EventArgs e)
+        {
+            int id = int.Parse(Request.QueryString["id"] ?? "20");
+            NAlumno objCRUD = new NAlumno();
+
+            if (objCRUD.NEliminar(id) >= 1)
             {
                 Response.Redirect($"Index.aspx");
             }
-
         }
     }
 }

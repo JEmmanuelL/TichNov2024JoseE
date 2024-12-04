@@ -84,6 +84,8 @@ namespace Datos
                             nombre = reader["nombre"].ToString(),
                         };
 
+                        EstadUn = EstadoUno;
+
                     }
                     con.Close();
 

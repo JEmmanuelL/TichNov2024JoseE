@@ -13,27 +13,46 @@ namespace Presentation.Alumnos
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (!IsPostBack)
+            {
+                NEstado objCRUDestado = new NEstado();
+                NEstatusAlumno objCRUDEstatus = new NEstatusAlumno();
+                ddlEstado.DataSource = objCRUDestado.NConsultar();
+                ddlEstado.DataTextField = "Nombre";
+                ddlEstado.DataValueField = "id";
+                ddlEstado.DataBind();
+
+                ddlEstatus.DataSource = objCRUDEstatus.NConsultar();
+                ddlEstatus.DataTextField = "Nombre";
+                ddlEstatus.DataValueField = "id";
+                ddlEstatus.DataBind();
+            }
+           
+        }
+
+        protected void btnGuardar_Click(object sender, EventArgs e)
+        {
             NAlumno objCRUD = new NAlumno();
 
             Alumno Alumno = new Alumno
             {
-                nombre = "Jose",
-                primerApellido = "Lopez",
-                segundoApellido = "Jimenez",
-                correo = "yyy@hotmail.com",
-                telefono = "9211405292",
-                fechaNacimiento = Convert.ToDateTime("2000-09-17"),
-                curp = "LOJE00917HVZPMMA1",
-                sueldo = 45500,
-                idEstadoOrigen = 17,
-                idEstatus = 1,
+                nombre = txtNombre.Text,
+                primerApellido = txtPrimerA.Text,
+                segundoApellido = txtSegundoA.Text,
+                correo = txtCorreo.Text,
+                telefono = txtTelefono.Text,
+                fechaNacimiento = Convert.ToDateTime(txtFechaNA.Text),
+                curp = txtCURP.Text,
+                sueldo = Convert.ToDecimal(txtSueldoM.Text),
+                idEstadoOrigen = int.Parse(ddlEstado.SelectedValue),
+                idEstatus = int.Parse(ddlEstatus.SelectedValue),
             };
 
-            if(objCRUD.NAgregar(Alumno) >= 1)
+            if (objCRUD.NAgregar(Alumno) >= 1)
             {
                 Response.Redirect($"Index.aspx");
             }
-            
+
         }
     }
 }
