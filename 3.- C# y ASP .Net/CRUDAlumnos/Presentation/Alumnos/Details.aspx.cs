@@ -15,9 +15,8 @@ namespace Presentation.Alumnos
         {
             NAlumno objCRUD = new NAlumno();
 
-            //int id = int.Parse(Request.QueryString["id"] ?? "1");
+            int id = int.Parse(Request.QueryString["id"] ?? "2");
 
-            int id = 20;
 
             Alumno UnAlumno = objCRUD.NConsultar(id);
 

@@ -15,7 +15,7 @@ namespace Presentation.Alumnos
         {
             NAlumno objCRUD = new NAlumno();
 
-           int id = int.Parse(Request.QueryString["id"] ?? "20");
+           int id = int.Parse(Request.QueryString["id"] ?? "2");
 
             Alumno Alum = objCRUD.NConsultar(id);
 
@@ -46,7 +46,7 @@ namespace Presentation.Alumnos
 
         protected void btnEliminar_Click(object sender, EventArgs e)
         {
-            int id = int.Parse(Request.QueryString["id"] ?? "20");
+            int id = int.Parse(Request.QueryString["id"] ?? "2");
             NAlumno objCRUD = new NAlumno();
 
             if (objCRUD.NEliminar(id) >= 1)

@@ -18,7 +18,7 @@ namespace Presentation.Alumnos
 
             if (!IsPostBack)
             {
-                int id = int.Parse(Request.QueryString["id"] ?? "24");
+                int id = int.Parse(Request.QueryString["id"] ?? "2");
                 Alumno UnAlumno = objCRUD.NConsultar(id);
 
                 lblID.Text = UnAlumno.id.ToString();
@@ -56,9 +56,11 @@ namespace Presentation.Alumnos
         protected void btnGuardar_Click(object sender, EventArgs e)
         {
 
+            if (Page.IsValid)
+            {
                 NAlumno objCRUD = new NAlumno();
 
-                int id = int.Parse(Request.QueryString["id"] ?? "24");
+                int id = int.Parse(Request.QueryString["id"] ?? "2");
                 Alumno Alumn = new Alumno
                 {
                     id = id,
@@ -78,8 +80,17 @@ namespace Presentation.Alumnos
                 {
                     Response.Redirect($"Index.aspx");
                 }
+            }
           
              
+        }
+
+        protected void cvCurp_ServerValidate(object source, ServerValidateEventArgs args)
+        {
+            var fechaNac = txtFechaNA.Text;
+            var curpPartFechaNac = args.Value.Substring(4, 6);
+            var fechaNacFormatCurp = fechaNac.Substring(2, 2) + fechaNac.Substring(5, 2) + fechaNac.Substring(8, 2);
+            args.IsValid = curpPartFechaNac == fechaNacFormatCurp;
         }
     }
 }
