@@ -9,7 +9,7 @@
             <div class="col-sm-9">
                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="El campo nombre no puede estar vacio" ControlToValidate="txtNombre" CssClass="text-danger"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="revNombre" runat="server" ErrorMessage="El campo nombre solo acepta nombre y espacios" ControlToValidate="txtNombre" CssClass="text-danger" ValidationExpression="(\s*[a-zA-Z]+\s*[a-zA-Z]*)+"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="revNombre" runat="server" ErrorMessage="El campo nombre solo acepta nombre y espacios" ControlToValidate="txtNombre" CssClass="text-danger" ValidationExpression="([A-Za-zÀ-ÿ\u00f1\u00d1\s])+"></asp:RegularExpressionValidator>
            
             </div>
         </div>
@@ -18,7 +18,7 @@
             <div class="col-sm-9">
                 <asp:TextBox ID="txtPrimerA" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvPrimerA" runat="server" ErrorMessage="El campo del Primer Apellido no puede estar vacio" ControlToValidate="txtPrimerA" CssClass="text-danger"></asp:RequiredFieldValidator>
-                 <asp:RegularExpressionValidator ID="revPrimerA" runat="server" ErrorMessage="El campo del Primer Apellido solo acepta nombre y espacios" ControlToValidate="txtPrimerA" CssClass="text-danger" ValidationExpression="(\s*[a-zA-Z]+\s*[a-zA-Z]*)+"></asp:RegularExpressionValidator> <%-- Mia (\s*[A-z]+\s*[A-z]*)+--%>
+                 <asp:RegularExpressionValidator ID="revPrimerA" runat="server" ErrorMessage="El campo del Primer Apellido solo acepta nombre y espacios" ControlToValidate="txtPrimerA" CssClass="text-danger" ValidationExpression="([A-Za-zÀ-ÿ\u00f1\u00d1 ])+"></asp:RegularExpressionValidator> <%-- Mia (\s*[A-z]+\s*[A-z]*)+--%>
 
             </div>
         </div>
@@ -26,7 +26,7 @@
             <label for="txtSegundoA" class="col-sm-3 col-form-label text-right">Segundo Apellido</label>
             <div class="col-sm-9">
                 <asp:TextBox ID="txtSegundoA" runat="server" CssClass="form-control"></asp:TextBox>
-                <asp:RegularExpressionValidator ID="revSegA" runat="server" ErrorMessage="El campo del Segundo Apellido solo acepta nombre y espacios" ControlToValidate="txtSegundoA" CssClass="text-danger" ValidationExpression="(\s*[A-z]+\s*[A-z]*)+"></asp:RegularExpressionValidator>
+                <asp:RegularExpressionValidator ID="revSegA" runat="server" ErrorMessage="El campo del Segundo Apellido solo acepta nombre y espacios" ControlToValidate="txtSegundoA" CssClass="text-danger" ValidationExpression="([A-Za-zÀ-ÿ\u00f1\u00d1 ])+"></asp:RegularExpressionValidator>
             </div>
         </div>
         <div class="form-group row">

@@ -258,5 +258,59 @@ namespace Datos
             return Result;
 
         }
+
+        public List<ItemTablaISR> ConsultarTablaISR()
+        {
+            List<ItemTablaISR> TablaISR = new List<ItemTablaISR>();
+
+
+            try
+            {
+                var query = $"consultarTablaISR";
+                SqlCommand comando;
+
+                using (SqlConnection con = new SqlConnection(_conectString))
+                {
+
+                    comando = new SqlCommand(query, con);
+                    comando.CommandType = System.Data.CommandType.StoredProcedure;
+                    con.Open();
+                    SqlDataReader reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        ItemTablaISR filaTablaISR = new ItemTablaISR
+                        {
+                            LimitInf = reader["LimInf"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["LimInf"]),
+                            LimitSup = reader["LimSup"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["LimSup"]),
+                            CuotaFija = reader["CuotaFija"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["CuotaFija"]),
+                            Excedente = reader["ExedLimInf"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["ExedLimInf"]),
+                            Subsidio = reader["Subsidio"] == DBNull.Value ? 0 : Convert.ToDecimal(reader["Subsidio"]),
+                            ISR = 0
+                        };
+
+                        TablaISR.Add(filaTablaISR);
+                    }
+                    con.Close();
+
+                }
+
+                if (TablaISR == null)
+                {
+                    throw new Exception("No se ha encontrado la tabla");
+                }
+
+            }
+            catch (Exception e)
+            {
+
+                Console.WriteLine("\nOcurrió un error inesperado los detalles son: " + e.Message + "\n");
+            }
+
+            return TablaISR;
+        }
+
+
+
+
     }
 }

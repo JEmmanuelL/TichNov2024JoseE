@@ -106,6 +106,12 @@
             </tbody>
         </table>
     </div>
+            <div class="text-start py-2">
+                <asp:Label ID="lblISRxIMSS" runat="server"></asp:Label>
+            </div>
+         <div class="text-start mt-4">
+     <asp:Button ID="btnISR" runat="server" Text="Calcular el ISR" CssClass="btn btn-primary" OnClick="btnISR_Click" />      <asp:Button ID="btnIMSS" runat="server" Text="Calcular el IMSS" CssClass="btn btn-primary px-1" OnClick="btnIMSS_Click" Width="161px" />
+     </div><br />
     <div class="mt-3">
         <a href="index.aspx" class="btn btn-link">Regresar a la Lista</a>
     </div>

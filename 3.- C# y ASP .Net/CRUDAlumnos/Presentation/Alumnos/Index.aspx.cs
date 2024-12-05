@@ -11,6 +11,8 @@ namespace Presentation.Alumnos
 {
     public partial class Index : System.Web.UI.Page
     {
+
+
         protected void Page_Load(object sender, EventArgs e)
         {
             CargarGridView();
@@ -65,7 +67,21 @@ namespace Presentation.Alumnos
 
             List<Alumno> Alumns = objCRUD.NConsultar();
 
-            gvAlumnos.DataSource = Alumns;
+                NEstado objCRUDestado = new NEstado();
+                NEstatusAlumno objCRUDEstatus = new NEstatusAlumno();
+
+            List<Estado> ListEstad = objCRUDestado.NConsultar();
+            List<EstatusAlumno> ListEstatu = objCRUDEstatus.NConsultar();
+
+
+            var ListaAluF5 =
+                   (from Alumno in Alumns
+                    join Estado in ListEstad on Alumno.idEstadoOrigen equals Estado.id
+                    join Estatus in ListEstatu on Alumno.idEstatus equals Estatus.id
+                    orderby Alumno.id ascending
+                    select new { id= Alumno.id, nombre = Alumno.nombre, primerApellido = Alumno.primerApellido, segundoApellido = Alumno.segundoApellido, correo = Alumno.correo, telefono = Alumno.telefono, idEstadoOrigen = Estado.nombre, idEstatus = Estatus.nombre }).ToList();
+
+            gvAlumnos.DataSource = ListaAluF5;
             gvAlumnos.DataBind();
         }
 

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script>
+	$(document).ready(function(){
+		
+		$("p[class='text-success error']").hide();
+
+		$("h3").html("TI Capital Humano <strong>(TICH)</strong>");
+
+		$("#aceptar").click(function() {
+			alert("Me oprimes, eres todo un opresor");
+
+			$("p[class='text-success error']").click(function(){
+						$(this).hide();
+			});
+
+				if(($("#nombre").val()=="" || $("#edad").val()=="" || $("#fechaNac").val()=="") ||($("#nombre").val()==null || $("#edad").val()==null || $("#fechaNac").val()==null) ){
+					
+					
+					$("p[class='text-success error']").show();
+					$("p[class='text-success error']").addClass("text-danger");
+				
+				}else{
+					var selectedEstadoText = $("#estado").children("option:selected").text();
+
+					var text = " Nombre: "+$("#nombre").val()+" Edad: "+$("#edad").val()+" años Fecha de Nacimiento: "+$("#fechaNac").val()+" Estado: "+selectedEstadoText;
+
+				$("#generales").text(text);
+
+				var cadena = "";
+					$("li").each(function() {
+						cadena = cadena + $(this).text() + ";";
+					});
+
+
+					$("#habilidades").text(cadena);
+				}
+
+				$( "p" ).find( "span" ).css( "color", "blue" );
+
+
+            });
+
+			$("#estado").change(function() {
+                var selectedEstado = $(this).children("option:selected").val();
+                var selectedEstadoText = $(this).children("option:selected").text();
+                alert("Usted Selecciono - " + selectedEstado + " " + selectedEstadoText);
+            });
+            $("#btnAceptar").click(function() {
+                var idestado = $("#idEstado").val()
+                $("#estado").val(idestado).change();
+            });
+
+
+			$("#titinstrucciones").mouseenter(function(evento){
+			$("#instrucciones").css("display", "block");
+			});
+			$("#titinstrucciones").mouseleave(function(evento){
+				$("#instrucciones").css("display", "none");
+			});
+
+	});
+	</script>
+</head>
+<body>
+	<h2>JQuery</h2>
+	<h3>Titulos</h3>
+	<p><span>Alumno</span> en capacitación</p>
+	<p>Desarrollo Web<span>TICH</span>.</p>		
+	<div id="titinstrucciones" class="bg-success text-white">Instruciones...</div>
+	<div id="instrucciones" class="text-primary" style="display: none;">Llenar el siguiente formato con informacion veridica</div>
+	<br>			
+	<p>Nombre: <input type="text" id="nombre"></p>
+	<p class="text-success error">Error en el nombre</p>
+    <p>edad: <input type="number" id="edad"></p>
+	<p class="text-success error">Error en la edad</p>
+	<p>Fecha Nacimiento: <input type="date" id="fechaNac"></p>
+	<p class="text-success error">Error en la fecha de nacimiento</p>
+
+	<select id="estado">
+		<option value="1">Aguascalientes</option>
+		<option value="2">Baja California</option>
+		<option value="3">Baja California Sur</option>
+  	</select>
+  <br>
+  <p>Habilidades:</p>
+ 	 <ul>
+	  <li>HTML</li>
+	  <li>CSS</li>
+	  <li>JavaScript</li>
+	  <li>JQuery</li>
+	</ul>
+	<p id="generales" class="text-primary">Mostar Nombre Edad y Fecha Nacimiento</p>
+	<p id="habilidades" class="text-primary">Mostrar Habilidades</p>
+
+	<button id="aceptar">Oprimeme!!</button>
+</body>
+</html>
