@@ -6,6 +6,7 @@ using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace BusinessLogic
 {
@@ -13,6 +14,9 @@ namespace BusinessLogic
     {
 
         private static string UMA = ConfigurationManager.AppSettings["ConstGlobalUMA"];
+
+        private Buni.RefWSAlumnos.WSAlumnosSoapClient _wSAlumnos = new Buni.RefWSAlumnos.WSAlumnosSoapClient();
+
 
         public List<Alumno> NConsultar() => DAlumno.DConsultar();
 
@@ -27,8 +31,20 @@ namespace BusinessLogic
 
 
 
-        public ItemTablaISR CalcularISR(int id)
+        public Entity.ItemTablaISR CalcularISR(int id)
         {
+
+            try
+            {
+              //  Buni.RefWSAlumnos.AportacionesIMSS a  = _wSAlumnos.CalcularISR(id);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
             ItemTablaISR FilaTablISR = new ItemTablaISR();
 
             DAlumno Funcio = new DAlumno();
@@ -49,17 +65,29 @@ namespace BusinessLogic
             return FilaEncOfTabla;
         }
 
-        public AportacionesIMSS CalcularIMSS(int id)
+        public Entity.AportacionesIMSS CalcularIMSS(int id)
         {
             AportacionesIMSS aportaciones = new AportacionesIMSS();
+            try
+            {
+                Buni.RefWSAlumnos.AportacionesIMSS IMSSservices = _wSAlumnos.CalcularIMSS(id);
+                string json = JsonConvert.SerializeObject(IMSSservices);
 
-            Alumno unAlumno = NConsultar(id);
+                aportaciones = JsonConvert.DeserializeObject<AportacionesIMSS>(json);
+            }
+            catch (Exception)
+            {
 
-            aportaciones.EnfermedadMaternidad = (unAlumno.sueldo - (3 * Convert.ToDecimal(UMA))) * 0.004m;
-            aportaciones.InvalidezVida = unAlumno.sueldo * 0.00625m;
-            aportaciones.Retiro = 0;
-            aportaciones.Cesantia = unAlumno.sueldo * 0.01125m;
-            aportaciones.Infonavit = 0;
+                Alumno unAlumno = NConsultar(id);
+
+                aportaciones.EnfermedadMaternidad = (unAlumno.sueldo - (3 * Convert.ToDecimal(UMA))) * 0.004m;
+                aportaciones.InvalidezVida = unAlumno.sueldo * 0.00625m;
+                aportaciones.Retiro = 0;
+                aportaciones.Cesantia = unAlumno.sueldo * 0.01125m;
+                aportaciones.Infonavit = 0;
+            }
+
+
 
             return aportaciones;
         }

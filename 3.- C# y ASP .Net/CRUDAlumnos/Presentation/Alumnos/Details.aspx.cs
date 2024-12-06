@@ -80,7 +80,20 @@ namespace Presentation.Alumnos
             ResultIMSS += $"La prestación obtenida para Cesantia es de {Sujeto.Cesantia.ToString("C2")}\n";
             ResultIMSS += $"La prestación obtenida para Credito Infonavit es de {Sujeto.Infonavit.ToString("C2")}\n";
 
-            lblISRxIMSS.Text = ResultIMSS;
+            lblEnfermedadMaternidad.Text = $"La prestación obtenida para Enfermedades y Maternidad es de {Sujeto.EnfermedadMaternidad.ToString("C2")}\n";
+            lblInvalidezVida.Text = $"La prestación obtenida para Invalidez y vida es de {Sujeto.InvalidezVida.ToString("C2")}\n";
+            lblRetiro.Text = $"La prestación obtenida para Retiro es de {Sujeto.Retiro.ToString("C2")}\n";
+            lblCesantia.Text = $"La prestación obtenida para Cesantia es de {Sujeto.Cesantia.ToString("C2")}\n";
+            lblInfonavit.Text = $"La prestación obtenida para Credito Infonavit es de {Sujeto.Infonavit.ToString("C2")}\n";
+
+            string scrit = @"<script type='text/javascript'> 
+                                $(function(){
+                                    $('#ModalIMSS').modal('show');
+                                 })
+                            </script>'";
+
+            ScriptManager.RegisterStartupScript(this, GetType(), "MuestraModal", scrit, false);
+            
         }
     }
 }
