@@ -1,0 +1,33 @@
+﻿
+@{
+    ViewBag.Title = "View";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Bienvenido</h2>
+
+@{
+    <p>Hoy es @DateTime.Now.ToString("G")</p>
+
+    if (DateTime.Now.Hour <= 12)
+    {
+        @ var msj = "Buenos días";
+    }
+    else if (DateTime.Now.Hour <= 19)
+    {
+        @ var msj = "Buenas Tardes";
+
+    }
+    else if (DateTime.Now.Hour <= 4)
+    {
+        @ var msj = "Buenos Noches";
+    }
+
+
+    <p>Request url: @Request.Url.ToString()</p>
+    <p>Request FilePath: @Request.FilePath.ToString()</p>
+    <p>Request Pathfísico del recurso : @Request.MapPath(Request.FilePath)</p>
+    <p>Request RequestType : @Request.RequestType.ToString()</p>
+
+
+}
