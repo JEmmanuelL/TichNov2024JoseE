@@ -1,0 +1,91 @@
+﻿@using MVC_Razor_ADO.Models
+@model Entity.Alumno
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+@using (Html.BeginForm())
+{
+    <table border="0" style="border-collapse: separate; border-spacing: 10px; width: 50%;">
+        <tr>
+            <th style="text-align: right;">ID</th>
+            <td>
+                @Html.DisplayFor(m => m.id)
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: right;">Nombre</th>
+            <td>
+                @Html.DisplayFor(m => m.nombre)
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: right;">Primer Apellido</th>
+            <td>
+                @Html.DisplayFor(m => m.primerApellido)
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: right;">Segundo Apellido</th>
+            <td>
+                @Html.DisplayFor(m => m.segundoApellido)
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: right;">Fecha de Nacimiento</th>
+            <td>
+                @Html.DisplayFor(m => m.fechaNacimiento)
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: right;">CURP</th>
+            <td>
+                @Html.DisplayFor(m => m.curp)
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: right;">Correo</th>
+            <td>
+                @Html.DisplayFor(m => m.correo)
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: right;">Teléfono</th>
+            <td>
+                @Html.DisplayFor(m => m.telefono)
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: right;">Sueldo Mensual</th>
+            <td>
+                @Html.DisplayFor(m => m.sueldo)
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: right;">Estado</th>
+            <td>
+                @ViewBag.idEstadoOrigen
+            </td>
+        </tr>
+        <tr>
+            <th style="text-align: right;">Estatus</th>
+            <td>
+                @ViewBag.idEstatus
+            </td>
+        </tr>
+    </table>
+
+    <div>
+        @*@Html.ActionLink("Eliminar", "Eliminar", "Alumnos", new { idAlumno = @Model.id }, htmlAttributes: new { @class = "btn btn-danger btn-sm" })*@
+        <br />
+        <input type="Submit" value="Eliminar" class="btn btn-danger" />
+
+    </div>
+
+}
+
+<br />
+@Html.ActionLink("Regresar al Index", "Regresar", "Alumnos", htmlAttributes: new { @class = "btn btn-grey btn-sm" })
