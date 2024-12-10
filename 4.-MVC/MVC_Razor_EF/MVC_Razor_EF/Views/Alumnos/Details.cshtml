@@ -1,11 +1,12 @@
-﻿@using MVC_Razor_ADO.Models
-@model Entity.Alumno
+﻿@model MVC_Razor_EF.Models.Alumnos
+
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Detalles del Alumno</h2>
+
 
 <table border="0" style="border-collapse: separate; border-spacing: 10px; width: 50%;">
     <tr>
@@ -35,16 +36,11 @@
     <tr>
         <th style="text-align: right;">Fecha de Nacimiento</th>
         <td>
-            @*@Html.Label(ViewBag.FechaNaci })*@
-
-            @{ 
+            @{
                 string Fec = Model.fechaNacimiento.ToString("yyyy-MM-dd");
 
                 @Html.DisplayFor(m => Fec);
             }
-
-            @*@Html.LabelFor(m => m.fechaNacimiento, new { htmlAttributes = new { @Value = Model.fechaNacimiento.ToString("yyyy-MM-dd"), @class = "form-control", @type = "date" }})*@
-
         </td>
     </tr>
     <tr>
@@ -74,13 +70,13 @@
     <tr>
         <th style="text-align: right;">Estado</th>
         <td>
-            @ViewBag.idEstadoOrigen
+            @Html.DisplayFor(m => m.Estados.nombre)
         </td>
     </tr>
     <tr>
         <th style="text-align: right;">Estatus</th>
         <td>
-            @ViewBag.idEstatus
+            @Html.DisplayFor(m => m.EstatusAlumnos.Nombre)
         </td>
     </tr>
 </table>

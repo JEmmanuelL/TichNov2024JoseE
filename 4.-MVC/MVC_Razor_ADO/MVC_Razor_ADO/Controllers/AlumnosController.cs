@@ -51,12 +51,14 @@ namespace MVC_Razor_ADO.Controllers
             NAlumno objCRUD = new NAlumno();
 
             Alumno UnAlumno = objCRUD.NConsultar(idAlumno);
-
             NEstado objCRUDestado = new NEstado();
             NEstatusAlumno objCRUDEstatus = new NEstatusAlumno();
 
             ViewBag.idEstadoOrigen = objCRUDestado.NConsultar(UnAlumno.idEstadoOrigen).nombre;
             ViewBag.idEstatus = objCRUDEstatus.NConsultar(UnAlumno.idEstatus).nombre;
+
+            //ViewBag.FechaNaci = UnAlumno.fechaNacimiento.ToString("yyyy-MM-dd");
+
 
             return View(UnAlumno);
         }
@@ -126,7 +128,7 @@ namespace MVC_Razor_ADO.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Alumno alumno)
+        public ActionResult Edit(int idAlumno,Alumno alumno)
         {
             NAlumno objCRUD = new NAlumno();
 

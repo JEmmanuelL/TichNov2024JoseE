@@ -1,11 +1,12 @@
-﻿@using MVC_Razor_ADO.Models
-@model Entity.Alumno
+﻿@model MVC_Razor_EF.Models.Alumnos
+
 @{
     ViewBag.Title = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Eliminar Alumno</h2>
+@{<h3>¿Esta seguro que desea eliminar al alumno? </h3>}
 
 @using (Html.BeginForm())
 {
@@ -73,13 +74,13 @@
         <tr>
             <th style="text-align: right;">Estado</th>
             <td>
-                @ViewBag.idEstadoOrigen
+                @Html.DisplayFor(m => m.Estados.nombre)
             </td>
         </tr>
         <tr>
             <th style="text-align: right;">Estatus</th>
             <td>
-                @ViewBag.idEstatus
+                @Html.DisplayFor(m => m.EstatusAlumnos.Nombre)
             </td>
         </tr>
     </table>
