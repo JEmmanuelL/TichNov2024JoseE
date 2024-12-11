@@ -1,5 +1,6 @@
 ﻿using Datos;
 using Entidades;
+using Negocio.RefWCFAlumnos;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -11,6 +12,8 @@ namespace Negocio
 {
     public class NAlumno
     {
+        private RefWCFAlumnos.WCFAlumnosClient _wcfAlumnos = new RefWCFAlumnos.WCFAlumnosClient();
+
         InstitutoTichEntities _DBContext = new InstitutoTichEntities();
         private List<Alumnos> _lstAlumnos;
         private Alumnos _oAlumno;
@@ -52,5 +55,39 @@ namespace Negocio
             _DBContext.Alumnos.Remove(_oAlumno);
             _DBContext.SaveChanges();
         }
+
+
+        public AportacionesIMSS CalcularIMSS(int id)
+        {
+            try
+            {
+                AportacionesIMSS wfcIMSS = _wcfAlumnos.CalcularIMSS(id);
+
+                return wfcIMSS;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+
+        }
+
+        public ItemTablaISR CalcularISR(int id)
+        {
+            try
+            {
+                ItemTablaISR wdcISR = _wcfAlumnos.CalcularISR1(id);
+
+                return wdcISR;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+            
+        }
+
     }
 }

@@ -47,6 +47,7 @@ namespace Entidades
         public string curp { get; set; }
 
         [Range(10000, 40000, ErrorMessage = "El valor debe estar entre el {1} y el {2}")]
+        [DisplayFormat(ApplyFormatInEditMode = true, DataFormatString = "{0:c2}")]
         public Nullable<decimal> sueldo { get; set; }
 
 

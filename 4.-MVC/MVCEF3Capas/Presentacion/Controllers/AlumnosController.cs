@@ -118,8 +118,23 @@ namespace Presentacion.Controllers
                 return View();
             }
         }
+
+        public ActionResult _AportacionesIMSS(int id)
+        {
+            return PartialView(objCRUDAlu.CalcularIMSS(id));
+        }
+
+        public ActionResult _TablaISR(int id)
+        {
+            return PartialView(objCRUDAlu.CalcularISR(id));
+        }
+
+
         public ActionResult Regresar()
         {
+           // objCRUDAlu.CalcularIMSS(19);
+            //objCRUDAlu.CalcularISR(19);
+
             return RedirectToAction("Index");
         }
     }
