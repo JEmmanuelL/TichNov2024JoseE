@@ -1,0 +1,87 @@
+﻿@model Entidades.Alumnos
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Detalles del Alumno</h2>
+
+
+<table border="0" style="border-collapse: separate; border-spacing: 10px; width: 50%;">
+    <tr>
+        <th style="text-align: right;">ID</th>
+        <td>
+            @Html.DisplayFor(m => m.id)
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right;">Nombre</th>
+        <td>
+            @Html.DisplayFor(m => m.nombre)
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right;">Primer Apellido</th>
+        <td>
+            @Html.DisplayFor(m => m.primerApellido)
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right;">Segundo Apellido</th>
+        <td>
+            @Html.DisplayFor(m => m.segundoApellido)
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right;">Fecha de Nacimiento</th>
+        <td>
+            @{
+                string Fec = Model.fechaNacimiento.ToString("yyyy-MM-dd");
+
+                @Html.DisplayFor(m => Fec);
+            }
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right;">CURP</th>
+        <td>
+            @Html.DisplayFor(m => m.curp)
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right;">Correo</th>
+        <td>
+            @Html.DisplayFor(m => m.correo)
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right;">Teléfono</th>
+        <td>
+            @Html.DisplayFor(m => m.telefono)
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right;">Sueldo Mensual</th>
+        <td>
+            @Html.DisplayFor(m => m.sueldo)
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right;">Estado</th>
+        <td>
+            @Html.DisplayFor(m => m.Estados.nombre)
+        </td>
+    </tr>
+    <tr>
+        <th style="text-align: right;">Estatus</th>
+        <td>
+            @Html.DisplayFor(m => m.EstatusAlumnos.Nombre)
+        </td>
+    </tr>
+</table>
+
+
+<br />
+@Html.ActionLink("Regresar al Index", "Regresar", "Alumnos", htmlAttributes: new { @class = "btn btn-grey btn-sm" })
