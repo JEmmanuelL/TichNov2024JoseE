@@ -12,7 +12,7 @@
 {
 
     <div class="form-group row">
-        @Html.Label("id", htmlAttributes: new { @class = "col-sm-3 col-form-label text-left" })
+        @Html.LabelFor(m => m.id, htmlAttributes: new { @class = "col-sm-3 col-form-label text-left" })
         <div class="col-sm-9">
             @Html.HiddenFor(model => model.id)
 
@@ -22,15 +22,19 @@
     </div>
 
     <div class="form-group row">
-        @Html.Label("Nombre", htmlAttributes: new { @class = "col-sm-3 col-form-label text-right" })
+        @Html.LabelFor(m => m.nombre, htmlAttributes: new { @class = "col-sm-3 col-form-label text-left" })
         <div class="col-sm-9">
             @Html.EditorFor(model => model.nombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.nombre, "", new { @class = "text-danger" })
+
         </div>
     </div>
     <div class="form-group row">
-        @Html.Label("Primer Apellido", htmlAttributes: new { @class = "col-sm-3 col-form-label text-right" })
+        @Html.LabelFor(m => m.primerApellido, htmlAttributes: new { @class = "col-sm-3 col-form-label text-left" })
         <div class="col-sm-9">
             @Html.EditorFor(model => model.primerApellido, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.primerApellido, "", new { @class = "text-danger" })
+
 
         </div>
     </div>
@@ -38,36 +42,48 @@
         @Html.Label("Segundo Apellido", htmlAttributes: new { @class = "col-sm-3 col-form-label text-right" })
         <div class="col-sm-9">
             @Html.EditorFor(model => model.segundoApellido, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.segundoApellido, "", new { @class = "text-danger" })
+
         </div>
     </div>
     <div class="form-group row">
         @Html.Label("Fecha de Nacimiento", htmlAttributes: new { @class = "col-sm-3 col-form-label text-right" })
         <div class="col-sm-9">
-            @Html.EditorFor(model => model.fechaNacimiento, new { htmlAttributes = new { @Value = Model.fechaNacimiento.ToString("yyyy-MM-dd"), @class = "form-control", @type = "date" } })
+            @Html.EditorFor(model => model.fechaNacimiento, new { htmlAttributes = new { @class = "form-control"} })
+            @Html.ValidationMessageFor(model => model.fechaNacimiento, "", new { @class = "text-danger" })
+
         </div>
     </div>
     <div class="form-group row">
         @Html.Label("CURP", htmlAttributes: new { @class = "col-sm-3 col-form-label text-right" })
         <div class="col-sm-9">
             @Html.EditorFor(model => model.curp, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.curp, "", new { @class = "text-danger" })
+
         </div>
     </div>
     <div class="form-group row">
         @Html.Label("Correo", htmlAttributes: new { @class = "col-sm-3 col-form-label text-right" })
         <div class="col-sm-9">
             @Html.EditorFor(model => model.correo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.correo, "", new { @class = "text-danger" })
+
         </div>
     </div>
     <div class="form-group row">
         @Html.Label("Telefono", htmlAttributes: new { @class = "col-sm-3 col-form-label text-right" })
         <div class="col-sm-9">
             @Html.EditorFor(model => model.telefono, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.telefono, "", new { @class = "text-danger" })
+
         </div>
     </div>
     <div class="form-group row">
         @Html.Label("Sueldo", htmlAttributes: new { @class = "col-sm-3 col-form-label text-right" })
         <div class="col-sm-9">
             @Html.EditorFor(model => model.sueldo, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.sueldo, "", new { @class = "text-danger" })
+
         </div>
     </div>
     <div class="form-group row">

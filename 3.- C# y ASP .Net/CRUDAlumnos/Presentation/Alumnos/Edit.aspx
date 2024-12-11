@@ -71,7 +71,7 @@
             <div class="col-sm-9">
                 <asp:TextBox ID="txtNombre" runat="server" CssClass="form-control"></asp:TextBox>
                 <asp:RequiredFieldValidator ID="rfvNombre" runat="server" ErrorMessage="El campo nombre no puede estar vacio" ControlToValidate="txtNombre" CssClass="text-danger"></asp:RequiredFieldValidator>
-                <asp:RegularExpressionValidator ID="revNombre" runat="server" ErrorMessage="El campo nombre solo acepta nombre y espacios" ControlToValidate="txtNombre" CssClass="text-danger" ValidationExpression="([A-Za-zÀ-ÿ\u00f1\u00d1 ])+"></asp:RegularExpressionValidator> <%--(\s*[a-zA-Z]+\s*[a-zA-Z]*)+  No acepta acentos, ni las 2 bolitas de u etc--%>
+                <asp:RegularExpressionValidator ID="revNombre" runat="server" ErrorMessage="El campo nombre solo acepta nombre y espacios" ControlToValidate="txtNombre" CssClass="text-danger" ValidationExpression="([A-Za-zÀ-ÿ\u00f1\u00d1\s])+"></asp:RegularExpressionValidator> <%--(\s*[a-zA-Z]+\s*[a-zA-Z]*)+  No acepta acentos, ni las 2 bolitas de u etc--%>
             </div>
         </div>
         <div class="form-group row">

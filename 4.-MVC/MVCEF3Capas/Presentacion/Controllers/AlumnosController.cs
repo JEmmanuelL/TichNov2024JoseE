@@ -38,16 +38,27 @@ namespace Presentacion.Controllers
         [HttpPost]
         public ActionResult Create(Alumnos alumno)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add insert logic here
-                objCRUDAlu.NAgregar(alumno);
-                return RedirectToAction("Index");
+                try
+                {
+                    // TODO: Add insert logic here
+                    objCRUDAlu.NAgregar(alumno);
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
+            else
             {
-                return View();
+                ViewBag.idEstado = new SelectList(objCRUDEstado.NConsultar(), "id", "nombre");
+                ViewBag.idEstatus = new SelectList(objCRUDEstatus.NConsultar(), "id", "nombre");
+                return View(alumno);
             }
+  
+
         }
 
         // GET: Alumnos/Edit/5
@@ -63,16 +74,27 @@ namespace Presentacion.Controllers
         [HttpPost]
         public ActionResult Edit(int idAlumno, Alumnos unAlumno)
         {
-            try
+           
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
-                objCRUDAlu.NActualizar(unAlumno);
-                return RedirectToAction("Index");
+                try
+                {
+                    // TODO: Add update logic here
+                    objCRUDAlu.NActualizar(unAlumno);
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
+            else
             {
-                return View();
+                ViewBag.idEstado = new SelectList(objCRUDEstado.NConsultar(), "id", "nombre");
+                ViewBag.idEstatus = new SelectList(objCRUDEstatus.NConsultar(), "id", "nombre");
+                return View(unAlumno);
             }
+
         }
 
         // GET: Alumnos/Delete/5

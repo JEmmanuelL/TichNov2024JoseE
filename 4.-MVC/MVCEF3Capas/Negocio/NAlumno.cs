@@ -28,7 +28,7 @@ namespace Negocio
             return _oAlumno;
         }
         public void NAgregar(Alumnos DataAlumno){
-
+            
             try
             {
                 _DBContext.Alumnos.Add(DataAlumno);
