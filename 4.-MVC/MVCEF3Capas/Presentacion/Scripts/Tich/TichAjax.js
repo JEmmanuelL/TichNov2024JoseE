@@ -24,6 +24,32 @@ function AjaxGEThtmlIMSS(url, MostrarModal) {
     })
 }
 
+function AjaxGETEstatusAlumno(url, MostrarModalEstatus) {
+
+    //alert(url + " url" + MostrarModalEstatus+" mos")
+
+    $.ajax({
+        type: 'GET',
+        url: url,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: MostrarModalEstatus,
+        error: errorGenerico
+    })
+
+}
+
+function AjaxDELETEEstatusAlumno(url, CerrarM) {
+    $.ajax({
+        type: 'DELETE',
+        url: url,
+        contentType: "application/json; charset=utf-8",
+        dataType: "json",
+        success: CerrarM,
+        error: errorGenerico
+    })
+}
+
     function errorGenerico(jqXHR, estatus, error) {
             var msg = '';
     if (jqXHR.status === 0) {

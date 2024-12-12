@@ -1,0 +1,139 @@
+﻿@model IEnumerable<Entidades.EstatusAlumnos>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Crear", "Create", "Alumnos", htmlAttributes: new { @class = "btn btn-primary" })
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Clave)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Clave)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.ActionLink("Detalles", "Details", new { id = item.id }, htmlAttributes: new { @class = "btn btn-warning btn-sm" })
+
+                @Html.ActionLink("Editar", "Edit", "EstatusAlumnos", new { id = item.id }, htmlAttributes: new { @class = "btn btn-success btn-sm" })
+
+                @Html.ActionLink("Eliminar", "Delete", "EstatusAlumnos", new { id = item.id }, htmlAttributes: new { @class = "btn btn-danger btn-sm" })
+
+                <input id="btnEliminarAJAX" type="button" value="Eliminar - AJAX" class="btn btn-outline-danger btn-sm" onclick="IniAJAX(@item.id)" />
+
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+<!-- Modal -->
+<div class="modal fade" id="ModalIndex" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabelIndex"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div id="BodyofBody">
+
+
+               
+            
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<script type="text/javascript">
+
+    const urlWebAPI = '@System.Configuration.ConfigurationManager.AppSettings["urlWebAPI"]';
+
+    function IniAJAX(id) {
+
+        $('exampleModalLabelIndex').text("TI Capital Humano");
+        let url = urlWebAPI + "/" + id
+        //console.log(url);
+        AjaxGETEstatusAlumno(url, MostrarModalEstatus);
+    }
+
+    function EliminarAJAX(id) {
+        let url = urlWebAPI + "/" + id
+        //console.log(url);
+        AjaxDELETEEstatusAlumno(url, CerrarM);
+    }
+
+    function CerrarM(DataEstatusJSON) {
+        location.reload();
+    }
+
+    function MostrarModalEstatus(DataEstatusJSON) {
+
+        const template = `
+
+        <div class="modal-body">
+                    <table class="table">
+               <tr>
+                   <th>
+                       ID
+                   </th>
+                   <th>
+                       Clave
+                   </th>
+                   <th>
+                       Nombre
+                   </th>
+                   <th>
+               </tr>
+               <tr>
+                   <td>
+                       ${DataEstatusJSON.id}
+                   </td>
+                   <td>
+                      ${DataEstatusJSON.clave}
+                   </td>
+                   <td>
+                       ${DataEstatusJSON.nombre}
+                   </td>
+               </tr>
+           </table>
+        </div>
+           <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal" onclick="EliminarAJAX(${DataEstatusJSON.id})">Eliminar</button>
+        </div>
+             
+     
+        `;
+
+       // console.log(template);
+        $('#BodyofBody').html(template);
+        $('#ModalIndex').modal('show');
+    }
+
+
+</script>
+
