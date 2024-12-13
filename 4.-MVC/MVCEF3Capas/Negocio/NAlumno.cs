@@ -15,27 +15,34 @@ namespace Negocio
         private RefWCFAlumnos.WCFAlumnosClient _wcfAlumnos = new RefWCFAlumnos.WCFAlumnosClient();
 
         InstitutoTichEntities _DBContext = new InstitutoTichEntities();
-        private List<Alumnos> _lstAlumnos;
-        private Alumnos _oAlumno;
+        //private List<Alumnos> _lstAlumnos;
+        //private Alumnos _oAlumno;
+
+        DRepositorio<Alumnos> RAlumno = new DRepositorio<Alumnos>();
+
+
         public List<Alumnos> NConsultar()
         {
-            _DBContext.Configuration.LazyLoadingEnabled = true;
-            _lstAlumnos = _DBContext.Alumnos.ToList();
+            //_DBContext.Configuration.LazyLoadingEnabled = true;
+            //_lstAlumnos = _DBContext.Alumnos.ToList();
 
-            return _lstAlumnos;
+            return RAlumno.RConsultar(); ;
         }
         public Alumnos NConsultar(int idAlumno)
         {
-            _DBContext.Configuration.LazyLoadingEnabled = true;
-            _oAlumno = _DBContext.Alumnos.Find(idAlumno);
-            return _oAlumno;
+            //_DBContext.Configuration.LazyLoadingEnabled = true;
+            //_oAlumno = _DBContext.Alumnos.Find(idAlumno);
+            return RAlumno.RConsultas(idAlumno);
         }
         public void NAgregar(Alumnos DataAlumno){
             
             try
             {
-                _DBContext.Alumnos.Add(DataAlumno);
-                _DBContext.SaveChanges();
+                //_DBContext.Alumnos.Add(DataAlumno);
+                //_DBContext.SaveChanges();
+
+                RAlumno.RAgregar(DataAlumno);
+
             }
             catch (Exception)
             {
@@ -43,17 +50,41 @@ namespace Negocio
             }
         }
         public void NActualizar(Alumnos DataEstatus) {
-            _DBContext.Entry(DataEstatus).State = EntityState.Modified;
-            _DBContext.SaveChanges();
-            
+            //_DBContext.Entry(DataEstatus).State = EntityState.Modified;
+            //_DBContext.SaveChanges();
+
+            try
+            {
+                DataEstatus.sueldo = Convert.ToDecimal(DataEstatus.sueldo);
+
+                RAlumno.RActualzizar(DataEstatus);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+
         }
 
         public void NEliminar(int idAlumno)
         {
-            _oAlumno = _DBContext.Alumnos.Find(idAlumno);
+            //_oAlumno = _DBContext.Alumnos.Find(idAlumno);
 
-            _DBContext.Alumnos.Remove(_oAlumno);
-            _DBContext.SaveChanges();
+            //_DBContext.Alumnos.Remove(_oAlumno);
+            //_DBContext.SaveChanges();
+
+            try
+            {
+                RAlumno.REliminar(idAlumno);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
 
